@@ -16,12 +16,9 @@ body{
     width: 720px;
     height: 480px;
 }
-.row{
-    justify-content: space-evenly;
-    display: flex;
-}
-.container{
-    justify-content: space-evenly;
+
+.container,.row{
+    justify-content: space-between;
     display: flex;
 }
 .column{
@@ -30,22 +27,31 @@ body{
 }
 .item{
     line-height: 32px;
-    font-size: 28px;
+    font-size: 24px;
     text-align: center;
-    margin: 5px;
+    margin-bottom: 10px;
     border-radius: 20px;
     height: 40px;
-    width: 180px;
+    width: 240px;
     background: #cffafe;
     border: #06b6d4 solid 3px;
 }
-.sm-font-size{
-    font-size: 18px;
-}
 .value{
-    width: 120px;
+    margin-left: 10px;
+    width: 100px;
 }
 h1{
     margin: 30px;
     text-align: center;
+}
+.weatherInfo{
+    line-height: 32px;
+    height: 40px;
+    width: 720px;
+    border-radius: 20px;
+    background: #cffafe;
+    border: #06b6d4 solid 3px;
+    margin: auto;
+    text-align: center;
+    font-size: 24px;
 }

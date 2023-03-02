@@ -30,20 +30,20 @@
 
         <div class="column">
             <div class="row">
-                <div class="item sm-font-size">Макс. Температура</div>
+                <div class="item sm-font-size">Макс. температура</div>
                 <div id="maxTemp" class="item value">-</div>
             </div>
 
             <div class="row">
-                <div class="item sm-font-size">Мин. Температура</div>
+                <div class="item sm-font-size">Мин. температура</div>
                 <div id="minTemp" class="item value">-</div>
             </div>
         </div>
-
     </div>
+    <p id="weatherInfoDaily" class="weatherInfo">-</p>
 
     <h1>Ежечасное</h1>
-    <div class="container horly">
+    <div class="container hourly">
 
         <div class="column">
             <div class="row">
@@ -63,21 +63,23 @@
 
         <div class="column">
             <div class="row">
-                <div class="item"></div>
-                <div class="item value">-</div>
+                <div class="item">Давление</div>
+                <div id="pressure" class="item value">-</div>
             </div>
 
             <div class="row">
-                <div class="item"></div>
-                <div class="item value">-</div>
+                <div class="item sm-font-size">Скорость ветра</div>
+                <div id="windSpeed" class="item value">-</div>
             </div>
             <div class="row">
-                <div class="item"></div>
+                <div class="item sm-font-size">Направление ветра</div>
                 <div class="item value">-</div>
             </div>
         </div>
 
     </div>
+
+    <p id="weatherInfoHourly" class="weatherInfo">-</p>
 
 
     <!--Main JS-->
