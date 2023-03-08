@@ -11,9 +11,10 @@ const humidityOut = document.getElementById('humidity')
 const tempOut = document.getElementById('temp')
 const pressureOut = document.getElementById('pressure')
 const windSpeedOut = document.getElementById('windSpeed')
-
+const windDirectionOut = document.getElementById('windDirection')
 const weatherInfoHourlyOut = document.getElementById('weatherInfoHourly')
 
+//Wmo codes
 const wmoCodes = {
     0:'Ясное небо',
     1:'Преимущественно ясно',
@@ -43,6 +44,26 @@ const wmoCodes = {
     95:'Умеренная гроза',
     96:'Гроза со слабым градом',
     99:'Гроза с сильным градом',
+}
+
+function getWeatherDirection(degrees){
+    if (degrees >= 338 || degrees <= 22){
+        return "С"
+    } else if ( degrees >= 23 && degrees <= 67){
+        return "СВ"
+    }else if ( degrees >= 68 && degrees <= 112){
+        return "В"
+    }else if ( degrees >= 113 && degrees <= 157){
+        return "ЮВ"
+    }else if ( degrees >= 158 && degrees <= 202){
+        return "Ю"
+    }else if ( degrees >= 203 && degrees <= 247){
+        return "ЮЗ"
+    }else if ( degrees >= 248 && degrees <= 292){
+        return "З"
+    }else if ( degrees >= 293 && degrees <= 337){
+        return "СЗ"
+    }
 }
 // Получить время (YYYY-MM-DD)
 function getDateNow(date){
@@ -81,6 +102,8 @@ function init(){
                 tempOut.innerHTML = data.hourly.temperature_2m[date.getHours()] + '°C'
                 pressureOut.innerHTML = Math.round(data.hourly.pressure_msl[date.getHours()]/1.333) + ' мм'
                 windSpeedOut.innerHTML = Math.round(data.hourly.windspeed_10m[date.getHours()]) + ' м/с'
+                windDirectionOut.innerHTML = getWeatherDirection(data.hourly.winddirection_10m[date.getHours()]) + ` <img id="arrow" src="../images/wind-duration.png" alt="">`
+                document.getElementById('arrow').style.transform = `rotate(${data.hourly.winddirection_10m[date.getHours()]}deg)`
                 weatherInfoHourlyOut.innerHTML = wmoCodes[data.hourly.weathercode[0]]
 
             })

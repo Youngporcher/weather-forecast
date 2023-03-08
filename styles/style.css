@@ -36,6 +36,9 @@ body{
     background: #cffafe;
     border: #06b6d4 solid 3px;
 }
+.item > *{
+    vertical-align: middle;
+}
 .value{
     margin-left: 10px;
     width: 100px;
