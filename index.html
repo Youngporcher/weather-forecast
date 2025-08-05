@@ -9,81 +9,124 @@
     <meta http-equiv="expires" content="0">
     <title>Погода</title>
     <!--Main css-->
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css?9991">
+    <!--Main JS-->
+    <script src="scripts/index.js?9991" defer></script>
     <!--Yandex map api-->
     <script src="https://api-maps.yandex.ru/2.1/?apikey=61dfd1de-d575-4f59-bd00-a329e6d5271c&lang=ru_RU" type="text/javascript"></script>
+    <!--Библиотека для графиков-->
+    <link rel="stylesheet" href="styles/chartist.min.css">
+    <script src="scripts/chartist.min.js"></script>
 </head>
 <body>
-    <div id="map" class="map"></div>
-    <h1>Ежесуточное</h1>
-    <div class="container daily">
-        <div class="column">
-            <div class="row">
-                <div class="item">Рассвет</div>
-                <div id="sunrise" class="item value">-</div>
-            </div>
-
-            <div class="row">
-                <div class="item">Закат</div>
-                <div id="sunset" class="item value">-</div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="row">
-                <div class="item sm-font-size">Макс. температура</div>
-                <div id="maxTemp" class="item value">-</div>
-            </div>
-
-            <div class="row">
-                <div class="item sm-font-size">Мин. температура</div>
-                <div id="minTemp" class="item value">-</div>
-            </div>
+    <div id = "loader" class="loader">
+        <div class="load">
+            <hr/><hr/><hr/><hr/>
         </div>
     </div>
-    <p id="weatherInfoDaily" class="weatherInfo">-</p>
-
-    <h1>Ежечасное</h1>
-    <div class="container hourly">
-
-        <div class="column">
-            <div class="row">
-                <div class="item">Осадки</div>
-                <div id="precipitation" class="item value">-</div>
-            </div>
-
-            <div class="row">
-                <div class="item">Влажность</div>
-                <div id="humidity" class="item value">-</div>
-            </div>
-            <div class="row">
-                <div class="item">Температура</div>
-                <div id="temp" class="item value">-</div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="row">
-                <div class="item">Давление</div>
-                <div id="pressure" class="item value">-</div>
-            </div>
-
-            <div class="row">
-                <div class="item sm-font-size">Скорость ветра</div>
-                <div id="windSpeed" class="item value">-</div>
-            </div>
-            <div class="row">
-                <div class="item sm-font-size">Направление ветра</div>
-                <div id="windDirection" class="item value">-</div>
-            </div>
-        </div>
-
+    <div id="modal" class="modal">
+        <div id="backdrop" class="backdrop"></div>
+        <div id="map" class="map"></div>
     </div>
+    <aside>
+        <div id="search-btn" class="search-btn">Указать местоположение</div>
+        <div class="address" id="address">Москва</div>
+    <div class="time" id="time">12:24</div>
+    <div class="block-date">
+        <span class="weekday" id="weekday">Sunday</span>
+        <span id="date">22.4.2022</span>
+    </div>
+    <img id=wImg" src="images/w0.png" alt="">
+    <div id="temp" class="degrees">28°C</div>
+    <div id="wmo" class="wmo">Осаждающий инейный туман</div>
+    <div class="block-AT">
+        <span>Ощущается как</span>
+        <div class="content">
+            <div id="aTemp">31°C</div>
+            <img src="images/thermometer.png" alt="">
+        </div>
+    </div>
+</aside>
+    <main>
+        <div class="graph">
+            <span>
+                <span class="graphselect graph-btn" id="temperature_2m">Температура</span>
+                <span class="graph-btn" id="windspeed_10m">Скорость ветра</span>
+                <span class="graph-btn" id="precipitation">Осадки</span>
+                <span class="graph-btn" id="relativehumidity_2m">Влажность</span>
+                <span class="graph-btn" id="pressure_msl">Давление</span>
+                <span class="graph-btn" id="uv_index">УФ-Индекс</span>
+            </span>
+            <div class="chart1"></div>
+        </div>
+        <div class="statistics">
+            <div class="block">
+                <span>Скорость ветра</span>
+                <div class="content">
+                    <div id="wind">1 м/с В</div>
+                    <img src="images/wind.png" alt="">
+                </div>
+            </div>
+            <div class="block">
+                <span>Осадки</span>
+                <div class="content">
+                    <div id="precipitations">0 ММ</div>
+                    <img src="images/precipitation.png" alt="">
+                </div>
+            </div>
+            <div class="block">
+                <span>Влажность</span>
+                <div class="content">
+                    <div id="humidity">23%</div>
+                    <img src="images/humidity.png" alt="">
+                </div>
+            </div>
 
-    <p id="weatherInfoHourly" class="weatherInfo">-</p>
+            <div class="block">
+                <span>Давление</span>
+                <div class="content">
+                    <div id="pressure">760 ММ</div>
+                    <img src="images/pressure.png" alt="">
+                </div>
+            </div>
+            <div class="block">
+                <span>Максимальная температура</span>
+                <div class="content">
+                    <div id="tMax">31°C</div>
+                    <img src="images/max.png" alt="">
+                </div>
+            </div>
+            <div class="block">
+                <span>Минимальная температура</span>
+                <div class="content">
+                    <div id="tMin">12°C</div>
+                    <img src="images/min.png" alt="">
+                </div>
+            </div>
 
+            <div class="block">
+                <span>Уф-индекс</span>
+                <div class="content">
+                    <div id="uv-index">2</div>
+                    <img src="images/uv-index.png" alt="">
+                </div>
+            </div>
+            <div class="block">
+                <span>Рассвет</span>
+                <div class="content">
+                    <div id="sunrise">4:23</div>
+                    <img src="images/sunrise.png" alt="">
+                </div>
+            </div>
+            <div class="block">
+                <span>Закат</span>
+                <div class="content">
+                    <div id="sunset">23:32</div>
+                    <img src="images/sunset.png" alt="">
+                </div>
+            </div>
 
-    <!--Main JS-->
-    <script src="scripts/index.js"></script>
+        </div>
+    </main>
 </body>
 </html>
